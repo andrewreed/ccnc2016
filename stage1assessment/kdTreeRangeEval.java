@@ -1,7 +1,6 @@
 import java.util.*;
 import java.io.*;
 import java.text.*;
-import org.apache.commons.math3.stat.StatUtils;
 import net.sf.javaml.core.kdtree.KDTree;
 
 public class kdTreeRangeEval {
@@ -40,9 +39,7 @@ public class kdTreeRangeEval {
 
 		}
 
-		System.out.println("Num windows: " + count);
-
-		/*double[] results = new double[NUM_WINDOWS];
+		double[] results = new double[NUM_WINDOWS];
 		for (int i = 0; i < count; i++) {
 			Window windowToCheck = windowArray[i];
 			double[] key = windowToCheck.getKey();
@@ -62,12 +59,7 @@ public class kdTreeRangeEval {
 			                                 key[5] + 0.015};
 
 			Object[] shortList = windowDB.range(lowerKey, upperKey);
-			//results[i] = (double)shortList.length;
 			System.out.println(shortList.length);
 		}
-
-		//System.out.println("Max results: " + StatUtils.max(results));
-		//System.out.println("Min results: " + StatUtils.min(results));
-		//System.out.println("Avg results: " + StatUtils.mean(results));*/
 	}
 }

@@ -43,4 +43,8 @@ If Column A shows a 2, then the row shows the statistics for all of the window v
 * Column G: Number of comparisons that are within +/- 2% of the 1st dimension
 * Column H: Number of comparisons that are within +/- 2% of the 1st dimension and +/- 0.015 of dimensions 2-6
 * Column I: Number of comparisons that are within +/- 2% of the 1st dimension, +/- 0.015 of dimensions 2-6, and > 0.97 correlated for the 4th derivative
+
+# Time to Run
+
+Dataset A will take about 40 minutes to run. Dataset B will take less than 1 minute.
 * Column J: Time (in milliseconds) to conduct all window vs. window comparisons for the two movies
