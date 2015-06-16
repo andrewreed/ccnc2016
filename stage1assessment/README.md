@@ -11,7 +11,7 @@ To compile and run the code, use the following commands:
 
 # Observing the Results
 
-Each line of output represents the number of results returned for a single search of the kd-tree. Thus, _kdTreeRangeEvalResults.txt_ has 584,776 since there are 584,776 windows in Dataset A.
+Each line of output represents the number of results returned for a single search of the kd-tree. Thus, _kdTreeRangeEvalResults.txt_ has 584,776 lines since there are 584,776 windows in Dataset A.
 
 # Time to Run
 
