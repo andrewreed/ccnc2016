@@ -112,31 +112,9 @@ public class ServerThread implements Runnable {
 					}
 				}
 
-				double[] currentSnapSamples = new double[20];
-				for (int y = 0; y < 20; y++) {
-					currentSnapSamples[y] = ((3.0*currentInliers[y]) + 
-								                  (-7.0*currentInliers[y+1]) + 
-								                   (1.0*currentInliers[y+2]) + 
-								                   (6.0*currentInliers[y+3]) + 
-								                   (1.0*currentInliers[y+4]) + 
-								                  (-7.0*currentInliers[y+5]) + 
-								                   (3.0*currentInliers[y+6])) / 11.0;
-				}
+				double inlierCorrel = correlator.correlation(currentInliers, compareInliers);
 
-				double[] compareSnapSamples = new double[20];
-				for (int y = 0; y < 20; y++) {
-					compareSnapSamples[y] = ((3.0*compareInliers[y]) + 
-								                  (-7.0*compareInliers[y+1]) + 
-								                   (1.0*compareInliers[y+2]) + 
-								                   (6.0*compareInliers[y+3]) + 
-								                   (1.0*compareInliers[y+4]) + 
-								                  (-7.0*compareInliers[y+5]) + 
-								                   (3.0*compareInliers[y+6])) / 11.0;
-				}
-
-				double snapCorrel = correlator.correlation(currentSnapSamples, compareSnapSamples);
-
-				if (snapCorrel < 0.97) {
+				if (inlierCorrel < 0.97) {
 					continue;
 				}
 
@@ -145,7 +123,7 @@ public class ServerThread implements Runnable {
 				            compareWindow.getTitle() + "\t" + 
 				            compareWindow.getStartIndex() + "\t" +
 				            compareWindow.getKey()[0] / key[0] + "\t" +
-				            snapCorrel);
+				            inlierCorrel);
 			}
 		}
 		try {
