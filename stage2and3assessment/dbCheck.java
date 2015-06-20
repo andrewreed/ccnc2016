@@ -6,7 +6,7 @@ import org.apache.commons.math3.stat.StatUtils;
 
 public class dbCheck {
 
-	public static final int NUM_MOVIES = 400;
+	public static final int NUM_MOVIES = 104;
 	public static final int WINDOW_SIZE = 30;
 
 	public static void main(String[] args) {
@@ -60,7 +60,7 @@ public class dbCheck {
 			int allCombos = 0;
 			int withinTotalData = 0;
 			int withinAllocations = 0;
-			int withinSnapCorrel = 0;
+			int withinCorrel = 0;
 
 			ArrayList<int[]> matchList = new ArrayList<int[]>();
 
@@ -81,7 +81,7 @@ public class dbCheck {
 
 					allCombos++;
 
-					if ((diffPercentA > 0.02) && (diffPercentB > 0.02)) {
+					if ((diffPercentA > 0.01) && (diffPercentB > 0.01)) {
 						continue;
 					}
 
@@ -126,37 +126,23 @@ public class dbCheck {
 						}
 					}
 
-					double[] movieASnapSamples = new double[20];
-					for (int i = 0; i < 20; i++) {
-						movieASnapSamples[i] = ((3.0*movieAInliers[i]) + 
-									                 (-7.0*movieAInliers[i+1]) + 
-									                  (1.0*movieAInliers[i+2]) + 
-									                  (6.0*movieAInliers[i+3]) + 
-									                  (1.0*movieAInliers[i+4]) + 
-									                 (-7.0*movieAInliers[i+5]) + 
-									                  (3.0*movieAInliers[i+6])) / 11.0;
-					}
+					double inlierCorrel = correlator.correlation(movieAInliers, movieBInliers);
 
-					double[] movieBSnapSamples = new double[20];
-					for (int i = 0; i < 20; i++) {
-						movieBSnapSamples[i] = ((3.0*movieBInliers[i]) + 
-									                 (-7.0*movieBInliers[i+1]) + 
-									                  (1.0*movieBInliers[i+2]) + 
-									                  (6.0*movieBInliers[i+3]) + 
-									                  (1.0*movieBInliers[i+4]) + 
-									                 (-7.0*movieBInliers[i+5]) + 
-									                  (3.0*movieBInliers[i+6])) / 11.0;
-					}
-
-					double snapCorrel = correlator.correlation(movieASnapSamples, movieBSnapSamples);
-
-					if (snapCorrel < 0.97) {
+					if (inlierCorrel < 0.97) {
 						continue;
 					}
 					
-					withinSnapCorrel++;
+					withinCorrel++;
 
 					matchList.add(new int[]{movieAWindow.getStartIndex(), movieBWindow.getStartIndex()});
+
+					System.out.println("1" + "\t" +
+						                 movieA.getTitle() + "\t" +
+							               movieA.getBitrate() + "\t" +
+							               movieB.getTitle() + "\t" +
+							               movieB.getBitrate() + "\t" +
+														 (movieAWindow.getStartIndex()+1) + "\t" +
+														 (movieBWindow.getStartIndex()+1));
 				}
 			}
 
@@ -169,20 +155,20 @@ public class dbCheck {
 					int diffB1 = matchArray[b][1] - matchArray[a][1];
 
 					if ((diffA1 >= 15) && (diffA1 == diffB1)) {
-						System.out.println("1" + "\t" +
+						System.out.println("2" + "\t" +
 						                   movieA.getTitle() + "\t" +
 							                 movieA.getBitrate() + "\t" +
 							                 movieB.getTitle() + "\t" +
 							                 movieB.getBitrate() + "\t" +
-							                 matchArray[a][0] + "\t" +
-							                 matchArray[a][1] + "\t" +
+							                 (matchArray[a][0]+1) + "\t" +
+							                 (matchArray[a][1]+1) + "\t" +
 							                 diffA1);
 					}
 				}
 			}
 
 			long totalTimeMillis = System.currentTimeMillis() - startTime;
-			System.out.println("2" + "\t" +
+			System.out.println("3" + "\t" +
 			                   movieA.getTitle() + "\t" +
 			                   movieA.getBitrate() + "\t" +
 			                   movieB.getTitle() + "\t" +
@@ -190,7 +176,7 @@ public class dbCheck {
 			                   allCombos + "\t" +
 			                   withinTotalData + "\t" +
 			                   withinAllocations + "\t" +
-			                   withinSnapCorrel + "\t" +
+			                   withinCorrel + "\t" +
 			                   totalTimeMillis);
 		}
 	}

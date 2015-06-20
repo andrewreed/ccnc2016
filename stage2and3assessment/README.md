@@ -23,7 +23,16 @@ Suggested Sort:
 1. Sort By: Column A, Smallest to Largest
 2. Then By: Column I, Largest to Smallest
 
-If Column A shows a 1, then the row shows the statistics for a single Stage 3 false positive. The columns are:
+If Column A shows a 1, then the row shows the statistics for a single Stage 2 false match. The columns are:
+
+* Column B: Movie A's title
+* Column C: Movie A's bitrate
+* Column D: Movie B's title
+* Column E: Movie B's bitrate
+* Column F: The start index of the window in Movie A
+* Column G: The start index of the window in Movie B
+
+If Column A shows a 2, then the row shows the statistics for a single Stage 3 false positive. The columns are:
 
 * Column B: Movie A's title
 * Column C: Movie A's bitrate
@@ -33,7 +42,7 @@ If Column A shows a 1, then the row shows the statistics for a single Stage 3 fa
 * Column G: The start index of the first window in Movie B
 * Column H: The offset of the second window in each movie
 
-If Column A shows a 2, then the row shows the statistics for all of the window vs. window comparisons between two videos. The columns are:
+If Column A shows a 3, then the row shows the statistics for all of the window vs. window comparisons between two videos. The columns are:
 
 * Column B: Movie A's title
 * Column C: Movie A's bitrate
