@@ -1,5 +1,5 @@
 # Overview
-This is the GitHub repo for the code used in the IEEE WIFS 2015 paper. You can obtain the .pcap's from our tests from:
+This is the GitHub repo for the code used in the IEEE CCNC 2016 paper. You can obtain the .pcap's from our tests from:
 
 https://drive.google.com/folderview?id=0B3cMrOhPT_6zfjl6WWFMZHgwSFVZS1lUS0xGRWdMMF9tektEWmxSZUdwVnl6YkoyVGEyTlk&usp=sharing
 
