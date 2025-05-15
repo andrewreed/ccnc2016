@@ -1,7 +1,7 @@
 # Overview
 This is the GitHub repo for the code used in the IEEE CCNC 2016 paper. You can obtain the .pcap's from our tests from:
 
-[Google Drive](https://drive.google.com/drive/folders/0B3cMrOhPT_6zfjl6WWFMZHgwSFVZS1lUS0xGRWdMMF9tektEWmxSZUdwVnl6YkoyVGEyTlk?resourcekey=0-5_L98PnQO_pZ5OSNLGnHTA&usp=sharing)
+[Google Drive](https://drive.google.com/drive/folders/1hLOPq1Bzh09-xyFA4I5T02bLXB0BVyTV?usp=sharing)
 
 ## Usage
 Perhaps the easiest way to get started is to run the program on our .pcap's:
